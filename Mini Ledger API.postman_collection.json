@@ -1,0 +1,461 @@
+{
+  "info": {
+    "_postman_id": "b948aa7e-9070-4b3c-95cb-0bbd3931d0a4",
+    "name": "Mini Ledger API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52204182",
+    "_collection_link": "https://go.postman.co/collection/52204182-b948aa7e-9070-4b3c-95cb-0bbd3931d0a4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth-Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"postmanuser1\",\r\n  \"password\": \"postmanpass123\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/auth/register/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "register",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Auth-Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"postmanuser1\",\r\n  \"password\": \"postmanpass123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/auth/login/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Create",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Customer C\",\r\n  \"email\": \"cc@example.com\",\r\n  \"phone\": \"456\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/customers/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - List",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/customers/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Update",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"phone\": \"999\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/customers/{{customer_id}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "{{customer_id}}",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/customers/{{customer_id}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "{{customer_id}}",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Entries - Create",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"customer_id\": {{customer_id}},\r\n  \"entry_type\": \"credit\",\r\n  \"amount\": \"100.00\",\r\n  \"note\": \"Postman test\",\r\n  \"date\": \"2026-02-01\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/entries/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "entries",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Entries - List",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/entries/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "entries",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Entries - By Customer",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/customers/{{customer_id}}/entries/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "{{customer_id}}",
+            "entries",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Entries - Filter (type + date range)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/entries/?type=credit&start_date=2026-02-01&end_date=2026-02-09",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "entries",
+            ""
+          ],
+          "query": [
+            {
+              "key": "type",
+              "value": "credit"
+            },
+            {
+              "key": "start_date",
+              "value": "2026-02-01"
+            },
+            {
+              "key": "end_date",
+              "value": "2026-02-09"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Entries - By Customer Filter",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/customers/{{customer_id}}/entries/?type=credit&start_date=2026-02-01&end_date=2026-02-08",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "{{customer_id}}",
+            "entries",
+            ""
+          ],
+          "query": [
+            {
+              "key": "type",
+              "value": "credit"
+            },
+            {
+              "key": "start_date",
+              "value": "2026-02-01"
+            },
+            {
+              "key": "end_date",
+              "value": "2026-02-08"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Customers - Summary",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/customers/{{customer_id}}/summary/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "customers",
+            "{{customer_id}}",
+            "summary",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Auth - Refresh",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc3MDcyNTU1MCwiaWF0IjoxNzcwNjM5MTUwLCJqdGkiOiI2ZGEyNDU4MzE1ZWY0NGQzYTFiNzZlNDlkM2U2YWJhZiIsInVzZXJfaWQiOiI4In0.f9xuK7on0st4Nt3zbg8HYl1neX6p0R9E7-EyHUs43QQ\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/auth/refresh/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "refresh",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
